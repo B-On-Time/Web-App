@@ -1,105 +1,126 @@
 <template>
-  <form>
-    <md-card>
-      <md-card-header :data-background-color="dataBackgroundColor">
-        <h4 class="title">Edit Profile</h4>
-        <p class="category">Complete your profile</p>
-      </md-card-header>
+  <div class="content">
+    <div class="md-layout">
+      <div
+        class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
+      >
+      </div>
 
-      <md-card-content>
-        <div class="md-layout">
-          <div class="md-layout-item md-small-size-100 md-size-33">
-            <md-field>
-              <label>Company (disabled)</label>
-              <md-input v-model="disabled" disabled></md-input>
-            </md-field>
-          </div>
-          <div class="md-layout-item md-small-size-100 md-size-33">
-            <md-field>
-              <label>User Name</label>
-              <md-input v-model="username" type="text"></md-input>
-            </md-field>
-          </div>
-          <div class="md-layout-item md-small-size-100 md-size-33">
-            <md-field>
-              <label>Email Address</label>
-              <md-input v-model="emailadress" type="email"></md-input>
-            </md-field>
-          </div>
-          <div class="md-layout-item md-small-size-100 md-size-50">
-            <md-field>
-              <label>First Name</label>
-              <md-input v-model="firstname" type="text"></md-input>
-            </md-field>
-          </div>
-          <div class="md-layout-item md-small-size-100 md-size-50">
-            <md-field>
-              <label>Last Name</label>
-              <md-input v-model="lastname" type="text"></md-input>
-            </md-field>
-          </div>
-          <div class="md-layout-item md-small-size-100 md-size-100">
-            <md-field>
-              <label>Adress</label>
-              <md-input v-model="address" type="text"></md-input>
-            </md-field>
-          </div>
-          <div class="md-layout-item md-small-size-100 md-size-33">
-            <md-field>
-              <label>City</label>
-              <md-input v-model="city" type="text"></md-input>
-            </md-field>
-          </div>
-          <div class="md-layout-item md-small-size-100 md-size-33">
-            <md-field>
-              <label>Country</label>
-              <md-input v-model="country" type="text"></md-input>
-            </md-field>
-          </div>
-          <div class="md-layout-item md-small-size-100 md-size-33">
-            <md-field>
-              <label>Postal Code</label>
-              <md-input v-model="code" type="number"></md-input>
-            </md-field>
-          </div>
-          <div class="md-layout-item md-size-100">
-            <md-field maxlength="5">
-              <label>About Me</label>
-              <md-textarea v-model="aboutme"></md-textarea>
-            </md-field>
-          </div>
-          <div class="md-layout-item md-size-100 text-right">
-            <md-button class="md-raised md-success">Update Profile</md-button>
-          </div>
-        </div>
-      </md-card-content>
-    </md-card>
-  </form>
+      <div
+        class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"
+      >
+        <md-card>
+          <md-card-header data-background-color="purple">
+            <h4 class="title">All Employees</h4>
+          </md-card-header>
+          <md-card-content>
+            <ordered-table table-header-color="purple"></ordered-table>
+          </md-card-content>
+        </md-card>
+      </div>
+    </div>
+  </div>
 </template>
+
 <script>
-export default {
-  name: "edit-profile-form",
-  props: {
-    dataBackgroundColor: {
-      type: String,
-      default: ""
+  import {
+    OrderedTable
+  } from "@/components";
+
+  export default {
+    components: {
+      OrderedTable
+    },
+    data() {
+      return {
+        dailySalesChart: {
+          data: {
+            labels: ["M", "T", "W", "T", "F", "S", "S"],
+            series: [[12, 17, 7, 17, 23, 18, 38]]
+          },
+          options: {
+            lineSmooth: this.$Chartist.Interpolation.cardinal({
+              tension: 0
+            }),
+            low: 0,
+            high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+            chartPadding: {
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0
+            }
+          }
+        },
+        dataCompletedTasksChart: {
+          data: {
+            labels: ["12am", "3pm", "6pm", "9pm", "12pm", "3am", "6am", "9am"],
+            series: [[230, 750, 450, 300, 280, 240, 200, 190]]
+          },
+
+          options: {
+            lineSmooth: this.$Chartist.Interpolation.cardinal({
+              tension: 0
+            }),
+            low: 0,
+            high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+            chartPadding: {
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0
+            }
+          }
+        },
+        emailsSubscriptionChart: {
+          data: {
+            labels: [
+              "Ja",
+              "Fe",
+              "Ma",
+              "Ap",
+              "Mai",
+              "Ju",
+              "Jul",
+              "Au",
+              "Se",
+              "Oc",
+              "No",
+              "De"
+            ],
+            series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]]
+          },
+          options: {
+            axisX: {
+              showGrid: false
+            },
+            low: 0,
+            high: 1000,
+            chartPadding: {
+              top: 0,
+              right: 5,
+              bottom: 0,
+              left: 0
+            }
+          },
+          responsiveOptions: [
+            [
+              "screen and (max-width: 640px)",
+              {
+                seriesBarDistance: 5,
+                axisX: {
+                  labelInterpolationFnc: function(value) {
+                    return value[0];
+                  }
+                }
+              }
+            ]
+          ]
+        }
+      };
     }
-  },
-  data() {
-    return {
-      username: null,
-      disabled: null,
-      emailadress: null,
-      lastname: null,
-      firstname: null,
-      address: null,
-      city: null,
-      country: null,
-      code: null,
-      aboutme:
-        "Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
-    };
   }
-};
+
 </script>
+
 <style></style>
