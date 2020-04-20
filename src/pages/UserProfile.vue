@@ -10,7 +10,7 @@
           <h1 class="md-title"> Team {{ teamindex + 1 }}
             <!-- PROPER BUTTON FOR ADDING NEW EMPLOYEE: -->
             <!-- <md-button v-on:click="addEmployee" class="md-fab md-primary"> -->
-            <!-- BELOW SHOULD BE ELSEWHERE. USED FOR TESTING MULTIPLE TABLES -->
+            <!-- BUTTON BELOW IS STRICTLY USED FOR TESTING MULTIPLE TABLES -->
               <md-button v-on:click="addTeam" class="md-fab md-primary">
             <md-icon class="add">add</md-icon>
             </md-button>
