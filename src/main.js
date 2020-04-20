@@ -28,7 +28,7 @@ import routes from "./routes/routes";
 import GlobalComponents from "./globalComponents";
 import GlobalDirectives from "./globalDirectives";
 import Notifications from "./components/NotificationPlugin";
-
+import VueMaterialDateTimePicker from 'vue-material-date-time-picker'
 // MaterialDashboard plugin
 import MaterialDashboard from "./material-dashboard";
 
@@ -49,6 +49,7 @@ Vue.use(GlobalDirectives);
 Vue.use(Notifications);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
+Vue.use(VueMaterialDateTimePicker);
 
 /* eslint-disable no-new */
 new Vue({

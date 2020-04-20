@@ -21,7 +21,7 @@
       </sidebar-link>
       <sidebar-link to="/typography">
         <md-icon>library_books</md-icon>
-        <p>Reports</p>
+        <p>User</p>
       </sidebar-link>
     </side-bar>
 
