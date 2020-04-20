@@ -7,9 +7,10 @@
       md-selectable="multiple"
       md-auto-select
       >
-        <md-table-cell md-label="">{{ item.id }}</md-table-cell>
-        <md-table-cell md-label="Name">{{ item.name }}</md-table-cell>
-        <md-table-cell md-label="Position">{{ item.position }}</md-table-cell>
+      <md-table-cell v-model="user.id" md-label="">{{ item.id }}</md-table-cell>
+      <md-table-cell v-model="user.name" md-label="Name">{{ item.name }}</md-table-cell>
+      <md-table-cell v-model="user.position" md-label="Position">{{ item.position }}</md-table-cell>
+      <md-table-cell v-model="user.hours" md-label="Hours Worked">{{ item.hours }}</md-table-cell>
       </md-table-row>
     </md-table>
   </div>
@@ -24,32 +25,18 @@ export default {
       default: ""
     }
   },
+
   data() {
     return {
       selected: [],
-      users: [
+      user: [
         {
-          id: 1,
-          name: "Dakota Rice",
-          position: "Assistant",
-        },
-        {
-          id: 2,
-          name: "Minerva Hooper",
-          position: "Intern",
-        },
-        {
-          id: 3,
-          name: "Sage Rodriguez",
-          position: "Engineer",
-        },
-        {
-          id: 4,
-          name: "Philip Chaney",
-          position: "Writer",
-        }
-      ]
-    };
+          id: '',
+          name: '',
+          position: '',
+          hours: ''
+        }]
+    }
   }
 };
 </script>

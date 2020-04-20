@@ -9,6 +9,7 @@ import Maps from "@/pages/Maps.vue";
 import Notifications from "@/pages/Notifications.vue";
 import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
 import Login from "@/pages/Login.vue";
+import NewUser from "@/pages/NewUser.vue";
 
 const routes = [
   {
@@ -32,10 +33,17 @@ const routes = [
         component: TableList
       },
       {
+        path: "newuser",
+        name: "NewUser",
+        component: NewUser
+      },
+
+      {
         path: "typography",
         name: "Typography",
         component: Typography
       },
+
       {
         path: "icons",
         name: "Icons",

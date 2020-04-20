@@ -11,7 +11,7 @@
       >
         <md-card>
           <md-card-header data-background-color="purple">
-            <h4 class="title">All Employees</h4>
+            <h4 class="title">Employees</h4>
           </md-card-header>
           <md-card-content>
             <ordered-table table-header-color="purple"></ordered-table>

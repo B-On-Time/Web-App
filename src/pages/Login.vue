@@ -96,7 +96,7 @@ button {
   font-weight: bold;
   letter-spacing: 1px;
   text-transform: uppercase;
-  width: 250px;
+  width: 305px;
   opacity: 0.8;
 }
 
@@ -141,7 +141,7 @@ button {
   letter-spacing: -5px;
   text-shadow: 1px 1px 0.2px white;
   opacity: 0.7;
-  margin-top: 73px;
+  margin-top: 45px;
 }
 
 .bg-gradiant {
