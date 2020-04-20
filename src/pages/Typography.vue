@@ -1,12 +1,13 @@
 <template>
   <div>
-    <b-container class="container">
+   <b-container class="container">
       <b-row class="page">
         <b-col>
           <b-avatar size="100px"></b-avatar>
           <br />
-           <h4>Name: {{firstName}} {{lastName}}</h4>
-          <h4>Employee ID: 555-10</h4> 
+           <h4 style="color:white">
+            Name: {{firstName}} {{lastName}} <br />
+            Employee ID: 555-10</h4> 
           <div>
             <VueMaterialDateTimePicker class="picker" v-model="dateAndTime" :is-date-only="false" />
           </div>
@@ -194,7 +195,7 @@ h1 {
 }
 
 div {
-  color: blue;
+  color: black;
 }
 
 .picker {
@@ -202,9 +203,11 @@ div {
 }
 
 .container {
-  margin-top: 6%;
+  margin-top: 5%;
   /* padding: 25%; */
-  /* background: blue; */
+  background: linear-gradient(to left , #8f25aa 15%, #a843ba 95%);
+  box-shadow: 10px 10px 5px #72358b;
+  border-radius: 15px;
 }
 
 .time-entries
@@ -217,5 +220,6 @@ div {
 }
 
 .page {
+  margin-top: 2%;
 }
 </style>
