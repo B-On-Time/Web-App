@@ -90,7 +90,7 @@
     top: 50%;
     left: 50%;
     margin-top: -320px;
-    margin-left: -400px;
+    margin-left: -600px;
   }
 
   .form-container {
