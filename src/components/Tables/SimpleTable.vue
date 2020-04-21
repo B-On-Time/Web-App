@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import db from '@/requests.js';
+
 export default {
   name: "SimpleTable",
   props: {
@@ -35,9 +37,22 @@ export default {
   },
   computed: {
     teams () {
-      this.$store.commit('setTeams');
-      return this.$store.state.teams;
+      return this.$store.getters.getTeams;
     }
+  },
+  methods: {
+    reportAll() {
+      var dateOffset = (24*60*60*1000) * 30; //30 days
+      var endDate = new Date();
+      var beginDate = new Date();
+      beginDate.setTime(beginDate.getTime() - dateOffset);
+      let endDateString = `${endDate.getFullYear()}-${endDate.getMonth()}-${endDate.getDate()}`
+      let beginDateString = `${beginDate.getFullYear()}-${beginDate.getMonth()}-${beginDate.getDate()}`
+      db.reporting.reportAll(beginDateString, endDateString, this);
+    }
+  },
+  beforeMount() {
+    this.reportAll()
   }
 };
 </script>
