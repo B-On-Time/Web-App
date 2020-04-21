@@ -3,12 +3,11 @@
    <b-container class="container">
       <b-row class="page">
         <b-col>
-          <b-avatar size="100px"></b-avatar>
           <br />
-           <h4 style="color:white">
+           <h4 style="font-weight: bold; color:black">
             Name: {{firstName}} {{lastName}} <br />
             Employee ID: 555-10</h4>
-            <p style="color: white;">Please select a date and time: </p>
+            <p style="font-weight: bold; color:black">Please select a date and time: </p>
           <div>
             <VueMaterialDateTimePicker class="picker" v-model="dateAndTime" :is-date-only="false" />
           </div>
@@ -20,7 +19,7 @@
       </b-row>
       <b-row>
         <b-col>
-          <h1 class="header">Timesheet</h1>
+          <h1 style="color:black; font-size: 32px" class="header">Timesheet</h1>
           <ul>
             <div class="time-entries" style="background:black">
               <div class="list-group">
@@ -31,8 +30,6 @@
                       <p class="text-center">
                       </p>
                     </div>
-
-
 
                     <div class="col-sm-7 comment-section">
                       <p>
@@ -183,9 +180,8 @@ div {
   /* padding: 25%; */
   background: linear-gradient(to left , #8f25aa 15%, #a843ba 95%);
   box-shadow: 3px 3px 2px #72358b;
-  border-radius: 15px;
   opacity: 0.9;
-  width: 880px;
+  width: 860px;
 }
 .time-entries
 {

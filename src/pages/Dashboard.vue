@@ -27,7 +27,7 @@
       <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100">
         <md-card>
           <md-card-header data-background-color="purple">
-            <h4 class="title">Employees Clocked In</h4>
+            <h1 style="color:black" class="md-title">Employees Clocked In</h1>
           </md-card-header>
 
           <md-card-content>

@@ -2,17 +2,14 @@
 <div class="content">
   <b-row>
     <b-col cols="12">
-      <md-button style="margin-top: 25px; left: 42%;" class="md-primary"
+      <md-button style="margin-top: 25px; text-align: center; left: 45%; right: 55%" class="md-primary"
       v-on:click="addEmployee">Add New Employee</md-button>
     </b-col>
   </b-row>
 
-  <div class="md-layout">
-    <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
-
       <!-- BUTTON BELOW IS STRICTLY USED FOR TESTING MULTIPLE TABLES -->
       <!-- <md-button v-on:click="addTeam" class="md-fab md-primary"> -->
-      <b-row>
+      <b-row style="margin-top: 50px; text-align: center; left: 50%; right: 50%" >
         <b-col cols="12">
           <div v-for="(team, teamindex) in teams" :key="teamindex">
             <md-card class="card">
@@ -20,7 +17,7 @@
                 <!-- header for multiple teams implementation -->
                 <!-- <h1 class="md-title"> Team {{ teamindex + 1 }} -->
                 <!-- Header for single team implementation -->
-                <h1 class="md-title"> Patrick {{ team.name }}</h1>
+                <h1 style="color:black" class="md-title"> Patrick {{ team.name }}</h1>
               </md-card-header>
 
               <md-card-content>
@@ -63,8 +60,6 @@
           </div>
         </b-col>
       </b-row>
-    </div>
-  </div>
 </div>
 </template>
 
@@ -182,7 +177,6 @@ export default {
 
 .card {
   width: 750px;
-  margin-left: 200px;
 }
 
 .add {
