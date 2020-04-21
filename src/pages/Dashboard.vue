@@ -23,7 +23,7 @@
           </md-card-header>
 
           <md-card-content>
-            <simple-table table-header-color="purple"></simple-table>
+            <SimpleTable table-header-color="purple"></SimpleTable>
           </md-card-content>
         </md-card>
       </div>
@@ -33,10 +33,13 @@
 </template>
 
 <script>
-import {SimpleTable} from "@/components";
+  // import { SimpleTable } from "@/components/Tables/SimpleTable.vue";
 
   export default {
-    SimpleTable
+    name: 'Dashboard',
+    components: {
+      SimpleTable: () => import('@/components/Tables/SimpleTable.vue')
+    }
   }
 </script>
 

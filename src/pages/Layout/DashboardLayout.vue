@@ -26,7 +26,7 @@
     </side-bar>
 
     <div class="main-panel">
-      <top-navbar></top-navbar>
+      <!-- <top-navbar></top-navbar> -->
 
       <fixed-plugin
         :color.sync="sidebarBackground"
@@ -36,7 +36,7 @@
 
       <dashboard-content> </dashboard-content>
 
-      <content-footer v-if="!$route.meta.hideFooter"></content-footer>
+      <!-- <content-footer v-if="!$route.meta.hideFooter"></content-footer> -->
     </div>
   </div>
 </template>

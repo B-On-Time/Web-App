@@ -1,43 +1,47 @@
 <template>
-  <div class="bg-gradiant">
-    <b-container fluid class="px-0">
-      <b-row class="form-container mx-0">
-        <b-col cols="6" class="px-0">
-          <img fluid class="front" src="../assets/bimg.png" />
-        </b-col>
-        <b-col cols="6" class="px-0">
-          <b-row>
-            <h1 class="login mx-auto">Login</h1>
-          </b-row>
-          <b-row class="mx-auto centered">
-            <md-field>
-              <label>Username</label>
-              <md-input v-model="input.username"></md-input>
-            </md-field>
-            <md-field>
-              <label>Password</label>
-              <md-input v-model="input.password"></md-input>
-            </md-field>
-          </b-row>
-          <b-row class="mx-auto centered">
-            <b-button
-              class="b1 mx-auto"
-              block
-              variant="light"
-              type="submit"
-              size="sm"
-              v-on:click="login()"
-            >
-              Sign In
-            </b-button>
-          </b-row>
-        </b-col>
-      </b-row>
-    </b-container>
-  </div>
+<div class="bg-gradiant">
+  <b-container fluid class="px-0">
+    <b-row class="form-container mx-0">
+      <b-col cols="6" class="px-0">
+        <img fluid class="front" src="../assets/bimg.png" />
+      </b-col>
+      <b-col cols="6" class="px-0">
+        <b-row>
+          <h1 class="login mx-auto">Login</h1>
+        </b-row>
+        <b-row class="mx-auto centered">
+          <md-field>
+            <label>Username</label>
+            <md-input v-model="input.username"></md-input>
+          </md-field>
+          <md-field>
+            <label>Password</label>
+            <md-input v-model="input.password"></md-input>
+          </md-field>
+        </b-row>
+        <b-row class="mx-auto centered">
+          <b-button class="b1 mx-auto" block variant="light" type="submit" size="sm" v-on:click="login()">
+            Sign In
+          </b-button>
+        </b-row>
+      </b-col>
+    </b-row>
+  </b-container>
+</div>
 </template>
 
 <script>
+import axios from 'axios';
+import db from '@/requests.js';
+
+const instance = axios.create({
+  // baseURL: 'https://api.crabrr.com',
+  baseURL: 'http://localhost:3030',
+  timeout: 10000,
+  headers: { "Content-Type": "application/json" },
+  withCredentials: true
+});
+
 export default {
   name: "login",
   data() {
@@ -55,25 +59,24 @@ export default {
   computed: {
     messageClass() {
       return {
-        "md-invalid": this.username
+        "md-invalid": this.input.username
       };
     }
   },
 
   methods: {
     login() {
-      if (this.input.username != "" && this.input.password != "") {
-        if (
-          this.input.username == this.mockAccount.username &&
-          this.input.password == this.mockAccount.password
-        ) {
-          this.$emit("authenticated", true);
-          this.$router.push("/dashboard");
-        } else {
-          console.log("The username and/or password you entered is incorrect.");
-        }
-      } else {
-        console.log("Please enter a username and/or password.");
+      db.auth.login(instance, this, this.input.username, this.input.password);
+      if (this.$store.getters.isAuthenticated)
+      {
+        this.$router.push(
+        {
+          path: "/dashboard"
+        });
+      }
+      else
+      {
+        console.log("Not Authenticated");
       }
     }
   }
@@ -147,15 +150,13 @@ button {
 .bg-gradiant {
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(
-    45deg,
-    #8860d0,
-    #9a75c9,
-    #5c9cb5,
-    #5680e9,
-    #9664ed,
-    #8860d0
-  );
+  background-image: linear-gradient(45deg,
+      #8860d0,
+      #9a75c9,
+      #5c9cb5,
+      #5680e9,
+      #9664ed,
+      #8860d0);
   position: fixed;
   top: 0;
   left: 0;

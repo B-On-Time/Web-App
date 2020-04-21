@@ -16,6 +16,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from "vue";
 import VueRouter from "vue-router";
+import 'es6-promise/auto';
+import Vuex from 'vuex';
 import App from "./App";
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import "bootstrap/dist/css/bootstrap.css";
@@ -23,6 +25,8 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 
 // router setup
 import routes from "./routes/routes";
+
+import store from "./store/store";
 
 // Plugins
 import GlobalComponents from "./globalComponents";
@@ -50,12 +54,14 @@ Vue.use(Notifications);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(VueMaterialDateTimePicker);
+Vue.use(Vuex)
 
 /* eslint-disable no-new */
 new Vue({
   el: "#app",
   render: h => h(App),
   router,
+  store,
   data: {
     Chartist: Chartist
   }
