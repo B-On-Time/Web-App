@@ -1,5 +1,6 @@
 <template>
 <div class="content">
+  {{teams}}
   <div class="md-layout">
     <div class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"></div>
     <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
@@ -61,100 +62,40 @@
 </template>
 
 <script>
+import db from '@/requests.js';
+
 export default {
   name: 'TableSingle',
   data: () => ({
     selected: {},
-
-    teams: {
-      period_start: '08/14/2020',
-      period_end: '08/28/2020',
-      reports: [ // 0 or more
-        {
-          meta: {
-            userID: '234',
-            fullName: 'Joe Phil',
-            totals: {
-              work: 32,
-              pto: 65,
-              upto: 534,
-              admin: 44
-            }
-          },
-          detail: [ // 0 or more
-            {
-              date: '08/27/2020',
-              type: 'WORK',
-              clockIn: '3:00 PM',
-              clockOut: '4:00 PM',
-              billableMins: 14,
-              breakTotalMins: 57,
-              breaks: [ // 0 or more
-                {
-                  breakStart: '3:30 PM',
-                  breakEnd: '3:40 PM',
-                  breakMins: 10
-                }
-              ]
-            }
-          ]
-        },
-        {
-          meta: {
-            userID: '234',
-            fullName: 'Joe Phil1',
-            totals: {
-              work: 321,
-              pto: 651,
-              upto: 5341,
-              admin: 441
-            }
-          },
-          detail: [ // 0 or more
-            {
-              date: '08/27/2020',
-              type: 'WORK',
-              clockIn: '3:00 PM',
-              clockOut: '4:00 PM',
-              billableMins: 141,
-              breakTotalMins: 571,
-              breaks: [ // 0 or more
-                {
-                  breakStart: '3:30 PM',
-                  breakEnd: '3:40 PM',
-                  breakMins: 10
-                }
-              ]
-
-            }
-          ]
-        }
-      ]
-    }
   }),
-
+  computed: {
+    teams: function () {
+      return this.$store.getters.getTeams;
+    },
+  },
   methods: {
     addEmployee: function (event) {
       this.$router.push("/newUser");
     },
-
-    addTeam: function (event) {
-      this.teams.push({
-        team: [{
-          id: "",
-          name: "",
-          status: "",
-          title: "",
-        }]
-
-      })
+    reportAll() {
+      var dateOffset = (24*60*60*1000) * 30; //30 days
+      var endDate = new Date();
+      var beginDate = new Date();
+      beginDate.setTime(beginDate.getTime() - dateOffset);
+      let endDateString = `${endDate.getFullYear()}-${endDate.getMonth() + 1}-${endDate.getDate()}`
+      let beginDateString = `${beginDate.getFullYear()}-${beginDate.getMonth() + 1}-${beginDate.getDate()}`
+      db.reporting.reportAll(beginDateString, endDateString, this);
     },
 
     goToProfile(employee) {
       this.$router.push("/profile");
       // Ties together with Victors part
     }
-  }
+  },
+  beforeMount() {
+    this.reportAll()
+  },
 }
 </script>
 

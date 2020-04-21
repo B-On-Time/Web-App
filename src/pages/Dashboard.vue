@@ -5,18 +5,15 @@
         <div>
           <b-row>
             <b-col>
-              <h1 class="title">Total Hours This Month: </h1>
-            </b-col>
-            <b-col>
-              <h1 class="title">Total Hours Today: </h1>
+              <h1 class="title">Total Hours This Month: {{(totalTimes.totalMonth/60).toFixed(2)}}</h1>
             </b-col>
           </b-row>
           <b-row>
             <b-col>
-              <h1 class="title">PTO This Month: </h1>
+              <h1 class="title">PTO This Month: {{(totalTimes.totalPTOMonth/60).toFixed(2)}}</h1>
             </b-col>
             <b-col>
-              <h1 class="title">UPTO This Month: </h1>
+              <h1 class="title">UPTO This Month: {{(totalTimes.totalUPTOMonth/60).toFixed(2)}}</h1>
             </b-col>
           </b-row>
         </div>
@@ -47,7 +44,23 @@
     name: 'Dashboard',
     components: {
       SimpleTable: () => import('@/components/Tables/SimpleTable.vue')
-    }
+    },
+    computed: {
+      totalTimes: function () {
+        let teams = this.$store.getters.getTeams;
+        let ret = {};
+        ret.totalMonth = 0;
+        ret.totalPTOMonth = 0;
+        ret.totalUPTOMonth = 0;
+        if (teams.reports == undefined) return ret;
+        teams.reports.forEach(element => {
+          ret.totalMonth += element.meta.totals.work
+          ret.totalPTOMonth += element.meta.totals.pto
+          ret.totalUPTOMonth += element.meta.totals.upto
+        });
+        return ret;
+      }
+    },
   }
 </script>
 

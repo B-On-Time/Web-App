@@ -1,19 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
-
-const instance = axios.create({
-  baseURL: 'http://localhost:3030',
-  timeout: 10000,
-  headers: {"content-type": "application/json"}
-});
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
       Authenticated: false,
-      teams: null,
+      teams: {},
       user: {
         user_id: null,
         first_name: null,

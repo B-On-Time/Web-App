@@ -10,9 +10,9 @@
       </md-table-row>
       <md-table-row slot="md-table-row" v-for="(user, index) in teams.reports" :key="index">
         <md-table-cell md-label="Name">{{ user.meta.fullName }}</md-table-cell>
-        <md-table-cell md-label="Work Total">{{ user.meta.totals.work }}</md-table-cell>
-        <md-table-cell md-label="PTO Total">{{ user.meta.totals.pto }}</md-table-cell>
-        <md-table-cell md-label="UPTO">{{ user.meta.totals.upto }}</md-table-cell>
+        <md-table-cell md-label="Work Total">{{ (user.meta.totals.work/60).toFixed(2) }} hr</md-table-cell>
+        <md-table-cell md-label="PTO Total">{{ (user.meta.totals.pto/60).toFixed(2) }} hr</md-table-cell>
+        <md-table-cell md-label="UPTO">{{ (user.meta.totals.upto/60).toFixed(2) }} hr</md-table-cell>
         <md-table-cell md-label="Status">Clocked in</md-table-cell>
       </md-table-row>
     </md-table>
@@ -36,9 +36,9 @@ export default {
       }
   },
   computed: {
-    teams () {
+    teams: function () {
       return this.$store.getters.getTeams;
-    }
+    },
   },
   methods: {
     reportAll() {
@@ -46,8 +46,8 @@ export default {
       var endDate = new Date();
       var beginDate = new Date();
       beginDate.setTime(beginDate.getTime() - dateOffset);
-      let endDateString = `${endDate.getFullYear()}-${endDate.getMonth()}-${endDate.getDate()}`
-      let beginDateString = `${beginDate.getFullYear()}-${beginDate.getMonth()}-${beginDate.getDate()}`
+      let endDateString = `${endDate.getFullYear()}-${endDate.getMonth() + 1}-${endDate.getDate()}`
+      let beginDateString = `${beginDate.getFullYear()}-${beginDate.getMonth() + 1}-${beginDate.getDate()}`
       db.reporting.reportAll(beginDateString, endDateString, this);
     }
   },

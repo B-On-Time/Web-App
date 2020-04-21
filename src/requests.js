@@ -79,7 +79,7 @@ const reporting = {
       "endDate": endDate
     })
     .then(async response => {
-      session.$store.commit('setTeams', response.data);
+      session.$store.commit('setTeams', response.data.result);
       console.log(response.data);
     })
     .catch(err => {
