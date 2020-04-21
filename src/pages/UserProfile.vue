@@ -1,26 +1,18 @@
 <template>
 <div class="content">
+  <b-row>
+    <b-col cols="12">
+      <md-button style="margin-top: 25px; left: 42%;" class="md-primary"
+      v-on:click="addEmployee">Add New Employee</md-button>
+    </b-col>
+  </b-row>
+
   <div class="md-layout">
     <div class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"></div>
     <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
 
       <!-- BUTTON BELOW IS STRICTLY USED FOR TESTING MULTIPLE TABLES -->
       <!-- <md-button v-on:click="addTeam" class="md-fab md-primary"> -->
-
-      <b-container class="bv-example-row" fluid="md">
-        <div>
-          <b-row>
-            <b-col>
-              <h1 class="header">Add New Employee</h1>
-            </b-col>
-            <b-col>
-              <md-button v-on:click="addEmployee" class="md-fab md-primary">
-                <md-icon class="add">add</md-icon>
-              </md-button>
-            </b-col>
-          </b-row>
-        </div>
-      </b-container>
       <div v-for="(team, teamindex) in teams" :key="teamindex">
         <md-card class="card">
           <md-card-header data-background-color="purple">
@@ -173,10 +165,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .header{
   font-size: 50px;
   color: white;
-  letter-spacing: -2px;
+  letter-spacing: -3px;
 }
 
 .table {
@@ -203,4 +196,5 @@ export default {
   margin-left: 500px;
 }
 </style>
+
 
