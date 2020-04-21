@@ -1,14 +1,14 @@
 <template>
   <div class="content">
     <div class="md-layout">
-      <b-container>
+      <b-container class="bv-example-row" fluid="md">
         <div>
           <b-row>
-            <b-col cols="6">
-              <h1 class="title">Total Hours This Week:</h1>
+            <b-col>
+              <h1 class="title">Total Hours This Week: </h1>
             </b-col>
-            <b-col cols="6">
-              <h1 class="title">Total Hours Today:</h1>
+            <b-col>
+              <h1 class="title">Total Hours Today: </h1>
             </b-col>
           </b-row>
         </div>
@@ -47,6 +47,8 @@
   .title{
     font-size: 27px;
     color: white;
+    padding: 5px;
+    margin-left: 15px;
   }
 
   .card{

@@ -19,13 +19,13 @@
                 <div class="md-layout-item md-small-size-100 md-size-50">
                   <md-field>
                     <label>Last Name</label>
-                    <md-input v-model="newUser.lastname" type="text"></md-input>
+                    <md-input v-model="newUser.lastname" type="email"></md-input>
                   </md-field>
                 </div>
                 <div class="md-layout-item md-small-size-100 md-size-50">
                   <md-field>
-                    <label>Email</label>
-                    <md-input v-model="newUser.email" type="email"></md-input>
+                    <label>Team</label>
+                    <md-input v-model="newUser.team" type="text"></md-input>
                   </md-field>
                 </div>
                 <div class="md-layout-item md-small-size-100 md-size-50">
@@ -35,7 +35,7 @@
                   </md-field>
                 </div>
                 <div class="md-layout-item md-size-100 text-left">
-                  <md-button v-on:click="createUser()" class="b1 mx-auto" type="submit">Create Profile</md-button>
+                  <md-button v-on:click="createUser()"  class="md-dense md-raised md-primary" type="submit">Add New User</md-button>
                 </div>
               </div>
             </md-card-content>
@@ -54,11 +54,10 @@
             pageStatus: {
                 waitingOnAPI: false
             },
-            user: {},
             newUser: {
                 firstname: "",
                 lastname: "",
-                email: "",
+                team: "",
                 position: "",
             },
          };
@@ -90,7 +89,7 @@
     top: 50%;
     left: 50%;
     margin-top: -320px;
-    margin-left: -600px;
+    margin-left: -640px;
   }
 
   .form-container {
