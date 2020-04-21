@@ -13,7 +13,7 @@
       </sidebar-link>
       <sidebar-link to="/user">
         <md-icon>person</md-icon>
-        <p>Teams</p>
+        <p>Team</p>
       </sidebar-link>
       <sidebar-link to="/table">
         <md-icon>content_paste</md-icon>
