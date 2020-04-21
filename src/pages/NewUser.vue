@@ -89,7 +89,7 @@ export default {
       ) return;
       this.success = true
       db.users.createUser(this.newUser.firstname, this.newUser.middlename, this.newUser.lastname, this.newUser.email, this.newUser.password);
-    }
+    },
   }
 };
 </script>

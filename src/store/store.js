@@ -12,6 +12,7 @@ export default new Vuex.Store({
         first_name: null,
         last_name: null
       },
+      self: {}
     },
 
     getters: {
@@ -21,6 +22,9 @@ export default new Vuex.Store({
       getFirstName: state => {
         return state.user.first_name;
       },
+      getLastName: state => {
+        return state.user.last_name;
+      },
       getUserId: state => {
         return state.user.user_id;
       },
@@ -29,6 +33,9 @@ export default new Vuex.Store({
       },
       getTeams: state => {
         return state.teams;
+      },
+      getSelf: state => {
+        return state.self
       }
     },
 
@@ -48,6 +55,9 @@ export default new Vuex.Store({
       },
       setTeams(state, teams) {
         state.teams = teams;
+      },
+      setSelf(state, self) {
+        state.self = self;
       }
     },
     actions: {
