@@ -107,12 +107,12 @@ export default {
       this.users[this.users.length - 1].clockin = this.dateAndTime
       let request = this.getDate(this.dateAndTime)
       db.clock.clockIn(request.eventDate, request.entryTime, this);
-      console.log(this.dateAndTime)
+      //console.log(this.dateAndTime)
     },
     addOut: function () {
       let request = this.getDate(this.dateAndTime)
       db.clock.clockOut(request.eventDate, request.entryTime, this);
-      console.log(this.dateAndTime)
+      //console.log(this.dateAndTime)
     },
     deleteEntry: function (someEntry) {
       let index = this.users.indexOf(someEntry)
