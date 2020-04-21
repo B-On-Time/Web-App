@@ -5,10 +5,18 @@
         <div>
           <b-row>
             <b-col>
-              <h1 class="title">Total Hours This Week: </h1>
+              <h1 class="title">Total Hours This Month: </h1>
             </b-col>
             <b-col>
               <h1 class="title">Total Hours Today: </h1>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col>
+              <h1 class="title">PTO This Month: </h1>
+            </b-col>
+            <b-col>
+              <h1 class="title">UPTO This Month: </h1>
             </b-col>
           </b-row>
         </div>
@@ -45,10 +53,10 @@
 
 <style>
   .title{
-    font-size: 27px;
+    font-size: 22px;
     color: white;
     padding: 5px;
-    margin-left: 15px;
+    margin-left: 20px;
   }
 
   .card{
