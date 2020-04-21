@@ -165,7 +165,6 @@ code {
   border-radius: 4px;
 }
 
-
 h1 {
   color: white;
 }
@@ -179,7 +178,7 @@ div {
   margin-top: 5%;
   /* padding: 25%; */
   background: linear-gradient(to left , #8f25aa 15%, #a843ba 95%);
-  box-shadow: 3px 3px 2px #72358b;
+  box-shadow: 1px 2px 3px 3px #72358b;
   opacity: 0.9;
   width: 860px;
 }
