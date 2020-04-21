@@ -1,7 +1,7 @@
 const axios = require('axios');
 const instance = axios.create({
-  // baseURL: 'https://api.crabrr.com',
-  baseURL: 'http://localhost:3030',
+  baseURL: 'https://api.crabrr.com',
+  // baseURL: 'http://localhost:3030',
   timeout: 10000,
   headers: { "Content-Type": "application/json" },
   withCredentials: true
@@ -73,12 +73,13 @@ const clock = {
 }
 
 const reporting = {
-  multi: (userID, seekTimestamp, session) => {
-    instance.post('/clock/status', {
-      "userId": userID,
-	    "seekTimestamp": seekTimestamp
+  reportAll: (startDate, endDate, session) => {
+    instance.post('/report/all', {
+      "startDate": startDate,
+      "endDate": endDate
     })
     .then(async response => {
+      session.$store.commit('setTeams', response.data);
       console.log(response.data);
     })
     .catch(err => {
@@ -88,5 +89,6 @@ const reporting = {
 }
 
 module.exports = {
-  auth
+  auth,
+  reporting
 };

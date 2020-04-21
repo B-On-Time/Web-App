@@ -26,16 +26,19 @@ export default new Vuex.Store({
         return state.user.first_name + " " + state.user.last_name;
       },
       getFirstName: state => {
-          return state.user.first_name;
+        return state.user.first_name;
       },
       getUserId: state => {
-          return state.user.user_id;
+        return state.user.user_id;
       },
       isAuthenticated: state => {
-          return state.Authenticated;
+        return state.Authenticated;
       },
+      getTeams: state => {
+        return state.teams;
+      }
     },
-    
+
     mutations: {
       logout(state) {
         state.Authenticated = false;
@@ -48,75 +51,10 @@ export default new Vuex.Store({
       },
       login(state, user) {
         state.Authenticated = true;
-        state.user = user
+        state.user = user;
       },
       setTeams(state, teams) {
-        state.teams = {
-          period_start: '08/14/2020',
-          period_end: '08/28/2020',
-          reports: [ // 0 or more
-            {
-              meta: {
-                userID: '234',
-                fullName: 'Joe Phil',
-                totals: {
-                  work: 32,
-                  pto: 65,
-                  upto: 534,
-                  admin: 44
-                }
-              },
-              detail: [ // 0 or more
-                {
-                  date: '08/27/2020',
-                  type: 'WORK',
-                  clockIn: '3:00 PM',
-                  clockOut: '4:00 PM',
-                  billableMins: 14,
-                  breakTotalMins: 57,
-                  breaks: [ // 0 or more
-                    {
-                      breakStart: '3:30 PM',
-                      breakEnd: '3:40 PM',
-                      breakMins: 10
-                    }
-                  ]
-  
-                }
-              ]
-            },
-            {
-              meta: {
-                userID: '234',
-                fullName: 'Joe Phil1',
-                totals: {
-                  work: 321,
-                  pto: 651,
-                  upto: 5341,
-                  admin: 441
-                }
-              },
-              detail: [ // 0 or more
-                {
-                  date: '08/27/2020',
-                  type: 'WORK',
-                  clockIn: '3:00 PM',
-                  clockOut: '4:00 PM',
-                  billableMins: 141,
-                  breakTotalMins: 571,
-                  breaks: [ // 0 or more
-                    {
-                      breakStart: '3:30 PM',
-                      breakEnd: '3:40 PM',
-                      breakMins: 10
-                    }
-                  ]
-  
-                }
-              ]
-            }
-          ]
-        }
+        state.teams = teams;
       }
     },
     actions: {
