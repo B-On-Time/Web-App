@@ -1,0 +1,60 @@
+<template>
+  <div class="content">
+    <div class="md-layout">
+      <b-container>
+        <div>
+          <b-row>
+            <b-col cols="6">
+              <h1 class="title">Total Hours This Week:</h1>
+            </b-col>
+            <b-col cols="6">
+              <h1 class="title">Total Hours Today:</h1>
+            </b-col>
+          </b-row>
+        </div>
+      </b-container>
+
+      <!-- SHOWS ALL EMPLOYEES CURRENTLY CLOCKED IN -->
+      <b-container>
+      <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100">
+        <md-card>
+          <md-card-header data-background-color="purple">
+            <h4 class="title">Employees Clocked In</h4>
+          </md-card-header>
+
+          <md-card-content>
+            <simple-table table-header-color="purple"></simple-table>
+          </md-card-content>
+        </md-card>
+      </div>
+      </b-container>
+    </div>
+  </div>
+</template>
+
+<script>
+import {SimpleTable} from "@/components";
+
+  export default {
+    SimpleTable
+  }
+</script>
+
+<style>
+  .title{
+    font-size: 27px;
+    color: white;
+  }
+
+  .card{
+    background-color: #411f50;
+    border-color: #411f50;
+    position: fixed;
+    margin-left: 300px;
+  }
+
+  .hours{
+    position: fixed;
+    margin-left: 300px;
+  }
+</style>
