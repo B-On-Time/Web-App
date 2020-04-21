@@ -12,11 +12,11 @@
         <b-row class="mx-auto centered">
           <md-field>
             <label>Username</label>
-            <md-input v-model="input.username"></md-input>
+            <md-input class="pass" v-model="input.username"></md-input>
           </md-field>
           <md-field>
             <label>Password</label>
-            <md-input v-model="input.password"></md-input>
+            <md-input class="pass" type="password" v-model="input.password"></md-input>
           </md-field>
         </b-row>
         <b-row class="mx-auto centered">
@@ -65,10 +65,10 @@ export default {
 
 <style lang="scss" scoped>
 input {
-  margin: 8px 0;
   width: 250px;
   opacity: 0.7;
 }
+
 
 button {
   border-radius: 5px;
@@ -110,10 +110,6 @@ button {
   height: 100%;
   opacity: 0.8;
   border-radius: 23px 0px 0px 23px;
-}
-
-.input2 {
-  margin-top: 1px;
 }
 
 .login {

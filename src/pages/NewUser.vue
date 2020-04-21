@@ -5,11 +5,11 @@
       <form class="card">
         <md-card>
           <md-card-header v-if="success" data-background-color="purple">
-            <h4 class="title">ACCOUNT CREATED!!</h4>
+            <h4 style="color:black; font-size: 28px" class="md-title">ACCOUNT CREATED!!</h4>
           </md-card-header>
           <div v-else>
             <md-card-header data-background-color="purple">
-              <h4 class="title">Create Profile</h4>
+              <h4 style="color:black; font-size: 28px" class="md-title">Create Profile</h4>
             </md-card-header>
 
             <md-card-content>

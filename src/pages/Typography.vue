@@ -3,23 +3,25 @@
   <b-container class="container">
     <b-row class="page">
       <b-col>
-        <b-avatar size="100px"></b-avatar>
         <br />
-        <h4 style="color:white">
+        <br />
+        <br />
+        <h4 style="font-weight: bold; color:black">
           Name: {{firstName}} {{lastName}} <br />
           Employee ID: {{ userId }}</h4>
+          <p style="font-weight: bold; color:black">Please select a date and time: </p>
         <div>
           <VueMaterialDateTimePicker class="picker" v-model="dateAndTime" :is-date-only="false" />
         </div>
         <h4>
           <md-button style="margin:3px" id="clkIn" class="md-dense md-raised md-primary" v-on:click="addIn">Clock In</md-button>
-          <md-button style="margin:3px" id="clkOut" class="md-dense md-raised md-primary" v-on:click="addOut" disabled>Clock out</md-button>
+          <md-button style="margin:3px" id="clkOut" class="md-dense md-raised md-primary" v-on:click="addOut">Clock out</md-button>
         </h4>
       </b-col>
     </b-row>
     <b-row>
       <b-col>
-        <h1 class="header">TimeSheet</h1>
+        <h1 style="color:black; font-size: 32px" class="header">Timesheet</h1>
         <ul>
           <div class="time-entries" style="background:black">
             <div class="list-group">
@@ -102,16 +104,12 @@ export default {
         alert("Please, select a time first")
         return
       }
-      document.getElementById("clkIn").disabled = true
-      document.getElementById("clkOut").disabled = false
       this.users[this.users.length - 1].clockin = this.dateAndTime
       let request = this.getDate(this.dateAndTime)
       db.clock.clockIn(request.eventDate, request.entryTime, this);
       console.log(this.dateAndTime)
     },
     addOut: function () {
-      document.getElementById("clkIn").disabled = false
-      document.getElementById("clkOut").disabled = true
       let request = this.getDate(this.dateAndTime)
       db.clock.clockOut(request.eventDate, request.entryTime, this);
       console.log(this.dateAndTime)
@@ -198,10 +196,6 @@ code {
   border-radius: 4px;
 }
 
-.vmdtp_text {
-  overflow: inherit;
-}
-
 h1 {
   color: white;
 }
@@ -218,10 +212,9 @@ div {
   margin-top: 5%;
   /* padding: 25%; */
   background: linear-gradient(to left, #8f25aa 15%, #a843ba 95%);
-  box-shadow: 3px 3px 2px #72358b;
-  border-radius: 15px;
+  box-shadow: 1px 2px 3px 3px #72358b;
   opacity: 0.9;
-  width: 880px;
+  width: 860px;
 }
 
 .time-entries {
@@ -240,4 +233,12 @@ div {
 .header {
   font-size: 45px;
 }
+</style>
+
+<style>
+
+.vmdtp_text {
+  overflow: inherit;
+}
+
 </style>
