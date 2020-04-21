@@ -38,8 +38,6 @@
 </template>
 
 <script>
-  // import { SimpleTable } from "@/components/Tables/SimpleTable.vue";
-
   export default {
     name: 'Dashboard',
     components: {

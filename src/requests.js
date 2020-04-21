@@ -88,7 +88,27 @@ const reporting = {
   },
 }
 
+const users = {
+  createUser: (firstName, middleName, lastName, email, password) => {
+    instance.post('/user', {
+      "firstName": firstName,
+      "middleName": middleName,
+      "lastName": lastName,
+      "email": email,
+      "password": password
+    })
+    .then(async response => {
+      console.log(response.data);
+      return true;
+    })
+    .catch(err => {
+      console.log(err);
+      return false;
+    });
+  }
+}
 module.exports = {
   auth,
-  reporting
+  reporting,
+  users
 };

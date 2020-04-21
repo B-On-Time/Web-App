@@ -1,56 +1,63 @@
 <template>
 <div class="content">
-  {{teams}}
+  <b-row>
+    <b-col cols="12">
+      <md-button style="margin-top: 25px; left: 42%;" class="md-primary"
+      v-on:click="addEmployee">Add New Employee</md-button>
+    </b-col>
+  </b-row>
+
   <div class="md-layout">
     <div class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"></div>
     <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
 
-      <div v-for="(team, teamindex) in teams" :key="teamindex">
+      <!-- BUTTON BELOW IS STRICTLY USED FOR TESTING MULTIPLE TABLES -->
+      <!-- <md-button v-on:click="addTeam" class="md-fab md-primary"> -->
+      <div v-for="(report, teamindex) in teams.reports" :key="teamindex">
         <md-card class="card">
           <md-card-header data-background-color="purple">
             <!-- header for multiple teams implementation -->
             <!-- <h1 class="md-title"> Team {{ teamindex + 1 }} -->
             <!-- Header for single team implementation -->
-            <h1 class="md-title"> {{ team.name }}
-              <!-- PROPER BUTTON FOR ADDING NEW EMPLOYEE: -->
-              <md-button v-on:click="addEmployee" class="md-fab md-primary">
-                <!-- BUTTON BELOW IS STRICTLY USED FOR TESTING MULTIPLE TABLES -->
-                <!-- <md-button v-on:click="addTeam" class="md-fab md-primary"> -->
-                <md-icon class="add">add</md-icon>
-              </md-button>
-            </h1>
+            <h1 class="md-title"> {{ report.meta.fullName }}</h1>
           </md-card-header>
 
           <md-card-content>
             <!-- Takes you to that particular employees profile page when clicked on -->
             <md-table class="table" table-header-color="purple" md-card @md-selected="goToProfile">
               <md-table-row slot="md-table-row" md-selectable="single">
-                <md-table-cell md-label="Name">
-                  Name
+                <md-table-cell md-label="Date">
+                  Date
                 </md-table-cell>
-                <md-table-cell md-label="Status">
-                  Status
+                <md-table-cell md-label="Clock In">
+                  Clock In
                 </md-table-cell>
-                <md-table-cell md-label="Status">
-                  billableMins
+                <md-table-cell md-label="Clock Out">
+                  Clock Out
                 </md-table-cell>
-                <md-table-cell md-label="Status">
-                  billableMins
+                <md-table-cell md-label="Work">
+                  Work Time
+                </md-table-cell>
+                <md-table-cell md-label="Break">
+                  Break Time
                 </md-table-cell>
               </md-table-row>
-              <md-table-row slot="md-table-row" v-for="(employee, employeeindex) in team.employees" :key="employeeindex+10" md-selectable="single">
-                <md-table-cell md-label="ID" md-sort-by="id" v-model="employee.id">{{ employee.id }}
+              <md-table-row slot="md-table-row" v-for="(timesheet, timesheetindex) in report.detail" :key="timesheetindex+10" md-selectable="single">
+                <md-table-cell md-label="Date">
+                  {{ timesheet.date }}
                 </md-table-cell>
-
-                <md-table-cell md-label="Name" v-model="employee.name" md-sort-by="name">{{ employee.name }}
+                <md-table-cell md-label="Clock In">
+                  {{ timesheet.clockIn }}
                 </md-table-cell>
-
-                <md-table-cell md-label="Status">
-                  <p class="status" v-if="employee.status == 'true'">Clocked In</p>
-                  <p v-else>Clocked Out</p>
+                <md-table-cell md-label="Clock Out">
+                  {{ timesheet.clockOut }}
                 </md-table-cell>
-
-                <md-table-cell md-label="Job Title" v-model="employee.title" md-sort-by="title">{{ employee.title }}</md-table-cell>
+                <md-table-cell md-label="Work">
+                  {{ (timesheet.billableMins/60).toFixed(2) }} hr
+                </md-table-cell>
+                <md-table-cell md-label="Break">
+                  <!-- {{ timesheet.breakTotalMins }} -->
+                </md-table-cell>
               </md-table-row>
             </md-table>
           </md-card-content>
@@ -60,6 +67,7 @@
   </div>
 </div>
 </template>
+
 
 <script>
 import db from '@/requests.js';
@@ -100,6 +108,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.header{
+  font-size: 50px;
+  color: white;
+  letter-spacing: -3px;
+}
+
 .table {
   width: 750px;
   margin-left: -21px;
@@ -124,3 +139,5 @@ export default {
   margin-left: 500px;
 }
 </style>
+
+
