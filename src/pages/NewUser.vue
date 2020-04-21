@@ -19,13 +19,13 @@
                 <div class="md-layout-item md-small-size-100 md-size-50">
                   <md-field>
                     <label>Last Name</label>
-                    <md-input v-model="newUser.lastname" type="email"></md-input>
+                    <md-input v-model="newUser.lastname" type="text"></md-input>
                   </md-field>
                 </div>
                 <div class="md-layout-item md-small-size-100 md-size-50">
                   <md-field>
-                    <label>Team</label>
-                    <md-input v-model="newUser.team" type="text"></md-input>
+                    <label>Email</label>
+                    <md-input v-model="newUser.email" type="email"></md-input>
                   </md-field>
                 </div>
                 <div class="md-layout-item md-small-size-100 md-size-50">
@@ -58,7 +58,7 @@
             newUser: {
                 firstname: "",
                 lastname: "",
-                team: "",
+                email: "",
                 position: "",
             },
          };
