@@ -31,16 +31,7 @@
 </template>
 
 <script>
-import axios from 'axios';
 import db from '@/requests.js';
-
-const instance = axios.create({
-  // baseURL: 'https://api.crabrr.com',
-  baseURL: 'http://localhost:3030',
-  timeout: 10000,
-  headers: { "Content-Type": "application/json" },
-  withCredentials: true
-});
 
 export default {
   name: "login",
@@ -66,18 +57,7 @@ export default {
 
   methods: {
     login() {
-      db.auth.login(instance, this, this.input.username, this.input.password);
-      if (this.$store.getters.isAuthenticated)
-      {
-        this.$router.push(
-        {
-          path: "/dashboard"
-        });
-      }
-      else
-      {
-        console.log("Not Authenticated");
-      }
+      db.auth.login(this.input.username, this.input.password, this);
     }
   }
 };

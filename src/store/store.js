@@ -20,6 +20,7 @@ export default new Vuex.Store({
         last_name: null
       },
     },
+
     getters: {
       getFullName: state => {
         return state.user.first_name + " " + state.user.last_name;
@@ -34,6 +35,7 @@ export default new Vuex.Store({
           return state.Authenticated;
       },
     },
+    
     mutations: {
       logout(state) {
         state.Authenticated = false;
