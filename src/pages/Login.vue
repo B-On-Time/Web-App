@@ -12,11 +12,11 @@
         <b-row class="mx-auto centered">
           <md-field>
             <label>Username</label>
-            <md-input v-model="input.username"></md-input>
+            <md-input class="pass" v-model="input.username"></md-input>
           </md-field>
           <md-field>
             <label>Password</label>
-            <md-input v-model="input.password"></md-input>
+            <md-input class="pass" type="password" v-model="input.password"></md-input>
           </md-field>
         </b-row>
         <b-row class="mx-auto centered">
@@ -123,6 +123,10 @@ button {
 .form-container {
   width: inherit;
   height: inherit;
+}
+
+.pass{
+  margin-top: -20px;
 }
 
 .front {

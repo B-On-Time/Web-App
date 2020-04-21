@@ -8,6 +8,7 @@
            <h4 style="color:white">
             Name: {{firstName}} {{lastName}} <br />
             Employee ID: 555-10</h4>
+            <p style="color: white;">Please select a date and time: </p>
           <div>
             <VueMaterialDateTimePicker class="picker" v-model="dateAndTime" :is-date-only="false" />
           </div>
@@ -19,7 +20,7 @@
       </b-row>
       <b-row>
         <b-col>
-          <h1 class="header">TimeSheet</h1>
+          <h1 class="header">Timesheet</h1>
           <ul>
             <div class="time-entries" style="background:black">
               <div class="list-group">
@@ -141,6 +142,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+vmdtp_text {
+  overflow: visible !important;
+}
+
 main {
   width: 525px;
   margin: 0 auto;
@@ -162,9 +167,8 @@ code {
   background-color: darkgray;
   border-radius: 4px;
 }
-.vmdtp_text {
-  overflow: inherit;
-}
+
+
 h1 {
   color: white;
 }
